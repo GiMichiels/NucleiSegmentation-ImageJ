@@ -1,0 +1,57 @@
+{
+    "command-line": "[CYTOMINE_HOST] [CYTOMINE_PUBLIC_KEY] [CYTOMINE_PRIVATE_KEY] [CYTOMINE_ID_PROJECT] [IJ_RADIUS] [IJ_THRESHOLD]",
+    "container-image": {
+        "image": "gmichiels/NucleiSegmentation-ImageJ",
+        "index": "docker",
+        "type": "singularity"
+    },
+    "processing-server-name": "local-container",
+    "description": "NucleiSegmentation-ImageJ",
+    "inputs": [
+        {
+            "id": "cytomine_id_project",
+            "name": "cytomine_id_project",
+            "optional": false,
+            "set-by-server": true,
+            "type": "number",
+            "value-key": "[CYTOMINE_ID_PROJECT]"
+        },
+        {
+            "id": "ij_radius",
+            "name": "ij_radius",
+            "default-value": 5,
+            "optional": true,
+            "set-by-server": false,
+            "type": "number",
+            "value-key": "[IJ_RADIUS]"
+        },
+        {
+            "id": "ij_threshold",
+            "name": "ij_threshold",
+            "default-value": -0.5,
+            "optional": true,
+            "set-by-server": false,
+            "type": "number",
+            "value-key": "[IJ_THRESHOLD]"
+        }
+    ],
+    "invocation-schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "additionalProperties": false,
+        "dependencies": {},
+        "description": "Invocation schema for cytomine-template.",
+        "properties": {
+            "cytomine_host": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "cytomine_host"
+        ],
+        "title": "Cytomine-template.invocationSchema",
+        "type": "object"
+    },
+    "name": "NucleiSegmentation-ImageJ",
+    "schema-version": "0.5",
+    "tool-version": "1.0"
+}
