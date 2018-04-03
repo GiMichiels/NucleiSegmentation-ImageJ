@@ -109,7 +109,10 @@ download_images(inputImages, inDir)
 # call the image analysis workflow in the docker image
 shArgs = "data/in data/out "+radius+" "+threshold + ""
 job = conn.update_job_status(job, status = job.RUNNING, progress = 25, status_comment = "Launching workflow...")
-command = "docker run --rm -v "+jobFolder+":/fiji/data neubiaswg5/nucleisegmentation-imagej " + shArgs
+
+command = "/fiji/run.sh " + shArgs
+
+#command = "docker run --rm -v "+jobFolder+":/fiji/data neubiaswg5/nucleisegmentation-imagej " + shArgs
 call(command,shell=True)	# waits for the subprocess to return
 
 job = conn.update_job_status(job, status = job.RUNNING, progress = 40, status_comment = "Extracting polygons...")
